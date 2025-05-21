@@ -56,14 +56,21 @@ $categories = get_all_category($conn);
                        href="#">About</a>
                     </li>
                     <li class="nav-item">
-                    <?php if (isset($_SESSION['user_id'])) { ?>
+                    <?php if (isset($_SESSION['user_role']) &&
+                              $_SESSION['user_role'] === "admin") { ?>
                         <a class="nav-link" 
                         href="admin.php">Admin</a>
-                    <?php } else { ?>
+                    <?php } 
+                    else if (isset($_SESSION['user_role']) &&
+                             !$_SESSION['user_role'] !== "admin") { ?>
+                        <a class="nav-link" 
+                       href="logout.php">Logout</a>
+                    <?php }else { ?>
                         <a class="nav-link" 
                         href="login.php">Login</a>
                     <?php } ?>
                     </li>
+                    
                 </ul>
                 </div>
             </div>
@@ -119,14 +126,17 @@ $categories = get_all_category($conn);
                                             echo $category['name'];
                                             break;
                                         }
-                                    } ?>
+                                    } ?>   
                                 <br></b></i>
-                            <a href="uploads/files/<?=$book['file']?>"
-                            class="btn btn-success">Open</a>
+                            <?php if (isset($_SESSION['user_id'])) { ?>
+                                <a href="uploads/files/<?=$book['file']?>"
+                                class="btn btn-success">Open</a>
 
-                            <a href="uploads/files/<?=$book['file']?>"
-                            class="btn btn-primary"
-                            download="<?=$book['title']?>">Download</a>
+                                <a href="uploads/files/<?=$book['file']?>"
+                                class="btn btn-primary"
+                                download="<?=$book['title']?>">Download</a>
+                            <?php } ?>
+                            
                         </div>
                 </div>
                 <?php } ?>

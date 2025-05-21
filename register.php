@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id']) &&
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
+    <title>REGISTER</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -23,7 +23,7 @@ if(!isset($_SESSION['user_id']) &&
         <form class="p-5 rounded shadow"
               style="max-width: 30rem; width: 100%"
               method="POST"
-              action="php/auth.php">
+              action="php/add-user.php">
               
             <h1 class="text-center display-4 pb-5">Login</h1>
             <?php if(isset($_GET['error'])) { ?>
@@ -32,6 +32,15 @@ if(!isset($_SESSION['user_id']) &&
                 </div>
             <?php } ?>
             
+            <div class="mb-3">
+                <label class="form-label">
+                        Full Name
+                </label>
+                <input type="text"
+                       class="form-control"
+                       name="full_name">
+            </div>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" 
                        class="form-label">Email address</label>
@@ -53,9 +62,8 @@ if(!isset($_SESSION['user_id']) &&
 
             <button type="submit" 
                     class="btn btn-primary">
-                    Login</button>
+                    Register</button>
             <a href="index.php">Store</a> 
-            <a href="register.php">Register</a>
         </form>
     </div>
 </body>
@@ -63,6 +71,6 @@ if(!isset($_SESSION['user_id']) &&
 
 <?php
 } else {
-    header("Location: index.php");
+    header("Location: admin.php");
     exit;
 } ?>

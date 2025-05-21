@@ -2,7 +2,9 @@
 session_start();
 
 if(isset($_SESSION['user_id']) &&
-   isset($_SESSION['user_email'])) {
+   isset($_SESSION['user_email']) &&
+   isset($_SESSION['user_role']) &&
+   $_SESSION['user_role'] === "admin") {
 
     include "db_conn.php";
 
@@ -250,6 +252,6 @@ if(isset($_SESSION['user_id']) &&
 
 <?php
 } else {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 } ?>

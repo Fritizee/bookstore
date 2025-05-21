@@ -27,7 +27,7 @@ if(isset($_POST['email']) &&
     $ms = "error";
     is_empty($password, $text, $location, $ms, "");
 
-    $sql = "SELECT * FROM admin 
+    $sql = "SELECT * FROM users 
             WHERE email=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$email]);
@@ -38,12 +38,14 @@ if(isset($_POST['email']) &&
         $user_id = $user['id'];
         $user_email = $user['email'];
         $user_password = $user['password'];
+        $user_role = $user['role'];
         if($email === $user_email) {
             if(password_verify($password, $user_password)){
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['user_email'] = $user_email;
+                $_SESSION['user_role'] = $user_role;
 
-                header("Location: ../admin.php");
+                header("Location: ../index.php");
             } else {
                 $em = "Incorrect email or password";
                 header("Location: ../login.php?error=$em");
