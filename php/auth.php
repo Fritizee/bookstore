@@ -5,13 +5,14 @@ session_start();
 if(isset($_POST['email']) && 
    isset($_POST['password'])) {
 
+    # Database connection
     include "../db_conn.php";
 
+    # Functionf validation
     include "func-validation.php";
 
     /**
-        Get data from POST request
-        and store them in var
+        Check if values is set
      **/
 
     $email = $_POST['email'];

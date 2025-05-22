@@ -7,6 +7,7 @@ if(isset($_SESSION['user_id']) &&
    isset($_SESSION['user_role']) &&
    $_SESSION['user_role'] === "admin") {
 
+    # Database connection
     include "../db_conn.php";
 
     if (isset($_POST['author_name'])) {

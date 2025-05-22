@@ -1,25 +1,23 @@
 <?php  
 
-	# Database Connection File
+	# Database connection
 	include "../db_conn.php";
 
-    # Validation helper function
+    # Validation function
     include "func-validation.php";
 
-    # File Upload helper function
+    # File Upload function
     include "func-file-upload.php";
 
 
     /** 
-	  If all Input field
-	  are filled
+	  Check if values passed
 	**/
 	if (isset($_POST['full_name']) &&
         isset($_POST['email']) &&
         isset($_POST['password'])) {
 		/** 
-		Get data from POST request 
-		and store them in var
+		Store values
 		**/
 		$name = $_POST['full_name'];
 		$email = $_POST['email'];
@@ -29,7 +27,7 @@
 		# making URL data format
 		$user_input = 'name='.$name.'&email='.$email.'&password='.$password;
 
-		#simple form Validation
+		# Validation
 
         $text = "Name";
         $location = "../register.php";

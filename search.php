@@ -6,8 +6,10 @@ if (!isset($_GET['key']) || empty($_GET['key'])) {
     exit;
 }
 
+# Search query
 $key = $_GET['key'];
 
+# Database connection
 include "db_conn.php";
 
 # Book helper function
@@ -53,14 +55,6 @@ $categories = get_all_category($conn);
                     <a class="nav-link active" 
                         aria-current="page" 
                         href="index.php">Store</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" 
-                       href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" 
-                       href="#">About</a>
                     </li>
                     <li class="nav-item">
                     <?php if (isset($_SESSION['user_id'])) { ?>

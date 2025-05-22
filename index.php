@@ -1,13 +1,14 @@
 <?php 
 session_start();
 
+# Database connection
 include "db_conn.php";
 
 # Book helper function
 include "php/func-book.php";
 $books = get_all_books($conn);
 
-#Author helper function
+# Author helper function
 include "php/func-author.php";
 $authors = get_all_author($conn);
 
@@ -46,14 +47,6 @@ $categories = get_all_category($conn);
                     <a class="nav-link active" 
                         aria-current="page" 
                         href="index.php">Store</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" 
-                       href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" 
-                       href="#">About</a>
                     </li>
                     <li class="nav-item">
                     <?php if (isset($_SESSION['user_role']) &&

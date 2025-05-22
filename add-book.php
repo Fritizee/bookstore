@@ -6,9 +6,10 @@ if(isset($_SESSION['user_id']) &&
    isset($_SESSION['user_role']) &&
    $_SESSION['user_role'] === "admin") {
 
+    # Database connection
     include "db_conn.php";
 
-    #Author helper function
+    # Author helper function
     include "php/func-author.php";
     $authors = get_all_author($conn);
 
@@ -16,6 +17,7 @@ if(isset($_SESSION['user_id']) &&
     include "php/func-category.php";
     $categories = get_all_category($conn);
 
+    # Check if everything is set
     if(isset($_GET['title'])) {
         $title = $_GET['title'];
     } else {
@@ -142,7 +144,7 @@ if(isset($_SESSION['user_id']) &&
                         </option>
                         <?php 
                         if ($authors == 0) {
-                    	# Do nothing!
+                    	# Do nothing
                         }else{
 		    	            foreach ($authors as $author) { 
 		    	    	    if ($author_id == $author['id']) { ?>
@@ -171,7 +173,7 @@ if(isset($_SESSION['user_id']) &&
                         </option>
                         <?php 
                         if ($categories == 0) {
-                    	    # Do nothing!
+                    	    # Do nothing
                         }else{
 		    	            foreach ($categories as $category) { 
 		    	    	    if ($category_id == $category['id']) { ?>

@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id']) &&
     isset($_SESSION['user_role']) &&
     $_SESSION['user_role'] === "admin") {
 
-	# Database Connection File
+	# Database connection
 	include "../db_conn.php";
 
 
@@ -17,12 +17,11 @@ if (isset($_SESSION['user_id']) &&
 	**/
 	if (isset($_GET['id'])) {
 		/** 
-		Get data from POST request 
-		and store them in var
+		Store it
 		**/
 		$id = $_GET['id'];
 
-		#simple form Validation
+		# Validation
 		if (empty($id)) {
 			$em = "Error Occured";
 			header("Location: ../admin.php?error=$em");
@@ -43,8 +42,7 @@ if (isset($_SESSION['user_id']) &&
                 $res = $stmt->execute([$id]);
 
                 /**
-                    If there is no error while 
-                    deleting the data
+                    If there is no error
                 **/
                 if ($res) {
                     # delete cover and file

@@ -6,13 +6,14 @@ if(isset($_SESSION['user_id']) &&
    isset($_SESSION['user_role']) &&
    $_SESSION['user_role'] === "admin") {
 
+    # Database connection
     include "db_conn.php";
 
     # Book helper function
     include "php/func-book.php";
     $books = get_all_books($conn);
 
-    #Author helper function
+    # Author helper function
     include "php/func-author.php";
     $authors = get_all_author($conn);
 

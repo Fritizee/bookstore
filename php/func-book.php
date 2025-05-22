@@ -1,5 +1,5 @@
 <?php
-
+# Get all books from the database
 function get_all_books($con) {
     $sql = "SELECT * FROM books ORDER BY id DESC";
     $stmt = $con->prepare($sql);
@@ -14,6 +14,7 @@ function get_all_books($con) {
     return $books;
 }
 
+# Get book from database by the id
 function get_book($con, $id) {
     $sql = "SELECT * FROM books WHERE id=?";
     $stmt = $con->prepare($sql);
@@ -30,7 +31,6 @@ function get_book($con, $id) {
 
 # Search books function
 function search_books($con, $key){
-    # creating simple search algorithm :) 
     $key = "%{$key}%";
  
     $sql  = "SELECT * FROM books 
@@ -48,7 +48,7 @@ function search_books($con, $key){
     return $books;
 }
 
-# get books by category
+# Get books by category
 function get_books_by_category($con, $id){
     $sql  = "SELECT * FROM books WHERE category_id=?";
     $stmt = $con->prepare($sql);
@@ -63,7 +63,7 @@ function get_books_by_category($con, $id){
     return $books;
 }
 
-# get books by author
+# Get books by author
 function get_books_by_author($con, $id){
     $sql  = "SELECT * FROM books WHERE author_id=?";
     $stmt = $con->prepare($sql);

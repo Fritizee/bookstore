@@ -11,8 +11,10 @@ if(isset($_SESSION['user_id']) &&
         exit;
     }
 
+    # Set book id
     $id = $_GET['id'];
 
+    # Database connection
     include "db_conn.php";
 
     # Book helper function
@@ -140,7 +142,7 @@ if(isset($_SESSION['user_id']) &&
                         </option>
                         <?php 
                         if ($authors == 0) {
-                    	# Do nothing!
+                    	# Do nothing
                         }else{
 		    	            foreach ($authors as $author) { 
 		    	    	    if ($book['author_id'] == $author['id']) { ?>

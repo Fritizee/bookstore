@@ -7,15 +7,17 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
+# Set category id
 $id = $_GET['id'];
 
+# Database connection
 include "db_conn.php";
 
 # Book helper function
 include "php/func-book.php";
 $books = get_books_by_category($conn, $id);
 
-#Author helper function
+# Author helper function
 include "php/func-author.php";
 $authors = get_all_author($conn);
 
@@ -55,14 +57,6 @@ $current_category = get_category($conn, $id);
                     <a class="nav-link active" 
                         aria-current="page" 
                         href="index.php">Store</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" 
-                       href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" 
-                       href="#">About</a>
                     </li>
                     <li class="nav-item">
                     <?php if (isset($_SESSION['user_id'])) { ?>

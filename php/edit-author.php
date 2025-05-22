@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id']) &&
 	isset($_SESSION['user_role']) &&
 	$_SESSION['user_role'] === "admin") {
 
-	# Database Connection File
+	# Database connection
 	include "../db_conn.php";
 
 
@@ -18,13 +18,12 @@ if (isset($_SESSION['user_id']) &&
 	if (isset($_POST['author_name']) &&
         isset($_POST['author_id'])) {
 		/** 
-		Get data from POST request 
-		and store them in var
+		Store it
 		**/
 		$name = $_POST['author_name'];
 		$id = $_POST['author_id'];
 
-		#simple form Validation
+		# Validation
 		if (empty($name)) {
 			$em = "The author name is required";
 			header("Location: ../edit-author.php?error=$em&id=$id");
@@ -38,8 +37,7 @@ if (isset($_SESSION['user_id']) &&
 			$res  = $stmt->execute([$name, $id]);
 
 			/**
-		      If there is no error while 
-		      updating the data
+		      If there is no error
 		    **/
 		     if ($res) {
 		     	# success message

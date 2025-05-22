@@ -1,5 +1,5 @@
 <?php
-
+# Get all authors from the database
 function get_all_author($con) {
     $sql = "SELECT * FROM authors";
     $stmt = $con->prepare($sql);
@@ -14,6 +14,7 @@ function get_all_author($con) {
     return $authors;
 }
 
+# Get author from the database by his id
 function get_author($con, $id) {
     $sql = "SELECT * FROM authors WHERE id=?";
     $stmt = $con->prepare($sql);

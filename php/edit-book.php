@@ -7,17 +7,16 @@ if (isset($_SESSION['user_id']) &&
     isset($_SESSION['user_role']) &&
     $_SESSION['user_role'] === "admin") {
 
-	# Database Connection File
+	# Database connection
 	include "../db_conn.php";
 
-   # Validation helper function
+   # Validation function
    include "func-validation.php";
 
-   # File Upload helper function
+   # File Upload function
    include "func-file-upload.php";
     /** 
-	  check if author 
-	  name is submitted
+	  check if data is submitted
 	**/
 	if (isset($_POST['book_id']) &&
         isset($_POST['book_title'])       &&
@@ -29,8 +28,7 @@ if (isset($_SESSION['user_id']) &&
         isset($_POST['current_cover']) &&
         isset($_POST['current_file'])) {
 		/** 
-		Get data from POST request 
-		and store them in var
+		Store them
 		**/
 		$id = $_POST['book_id'];
         $title       = $_POST['book_title'];
@@ -81,7 +79,6 @@ if (isset($_SESSION['user_id']) &&
     
                 /**
                   Redirect to '../edit-book.php' 
-                  and passing error message & id
                 **/
                 header("Location: ../edit-book.php?error=$em&id=$id");
                 exit;
@@ -103,8 +100,7 @@ if (isset($_SESSION['user_id']) &&
                 $res = $stmt->execute([$title, $author, $description, $category, $book_cover_URL, $file_URL, $id]);
 
                 /**
-                 If there is no error while 
-                updating the data
+                 If there is no error
                 **/
                 if ($res) {
                     # success message
@@ -131,7 +127,6 @@ if (isset($_SESSION['user_id']) &&
         
                     /**
                      Redirect to '../edit-book.php' 
-                    and passing error message & id
                     **/
                     header("Location: ../edit-book.php?error=$em&id=$id");
                     exit;
@@ -150,8 +145,7 @@ if (isset($_SESSION['user_id']) &&
                     $res = $stmt->execute([$title, $author, $description, $category, $book_cover_URL, $id]);
 
                     /**
-                     If there is no error while 
-                    updating the data
+                     If there is no error
                     **/
                     if ($res) {
                         # success message
@@ -179,8 +173,7 @@ if (isset($_SESSION['user_id']) &&
                 $em = $file['data'];
     
                 /**
-                  Redirect to '../edit-book.php' 
-                  and passing error message & id
+                  Redirect to '../edit-book.php'
                 **/
                 header("Location: ../edit-book.php?error=$em&id=$id");
                 exit;
@@ -199,8 +192,7 @@ if (isset($_SESSION['user_id']) &&
                 $res = $stmt->execute([$title, $author, $description, $category, $file_URL, $id]);
 
                 /**
-                 If there is no error while 
-                updating the data
+                 If there is no error
                 **/
                 if ($res) {
                     # success message
@@ -223,8 +215,7 @@ if (isset($_SESSION['user_id']) &&
             $res = $stmt->execute([$title, $author, $description, $category, $id]);
 
             /**
-		      If there is no error while 
-		      updating the data
+		      If there is no error
 		    **/
 		     if ($res) {
                 # success message

@@ -11,8 +11,10 @@ if(isset($_SESSION['user_id']) &&
         exit;
     }
 
+    # Set category id
     $id = $_GET['id'];
 
+    # Database connection
     include "db_conn.php";
 
     # Category helper function
